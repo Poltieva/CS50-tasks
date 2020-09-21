@@ -1,0 +1,19 @@
+body{
+    background-color: #ffffcc;
+    padding-top: 70px;
+    min-height: 75rem;
+}
+#key-phrase{
+    width: 450px;
+    border: 5px solid lightgreen;
+    padding: 10px;
+    font-size: 20px;
+}
+h2{
+    color: #000099;
+}
+big{
+    color: #e60000;
+    font-weight: bold;
+}
+ul.nav li.dropdown:hover ul.dropdown-menu { display: block; }
