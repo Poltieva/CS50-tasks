@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Current price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set count = namespace(value=0) %}
+                {% if info is not none %}
+                    {% for row in info %}
+                        {% if row['SUM(number)'] > 0 %}
+                            <tr>
+                                <td>{{ row["symbol"] }}</td><td>{{ row['SUM(number)'] }}</td>
+                                <td>${{ row["price"]|round(2) }}</td><td>${{ row['total']|round(2) }}</td>
+                                {% set count.value = count.value + row['total'] %}
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <tr>
+                    <td><b>CASH</b></td><td colspan="2"></td><td>${{ cash|round(2) }}</td>
+                    {% set count.value = count.value + cash %}
+                </tr>
+            </tbody>
+            <tfoot>
+                <td colspan="3"></td>
+                <td>${{ count.value|round(2) }}</td>
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}

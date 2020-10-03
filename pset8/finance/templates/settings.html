@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Settings
+{% endblock %}
+
+{% block main %}
+    <form action="/settings" method="post">
+        <p>Username: {{ username }}</p>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="new_password" placeholder="New password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Change</button>
+    </form>
+{% endblock %}

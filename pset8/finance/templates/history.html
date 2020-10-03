@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Cost</th>
+                    <th>Transacted</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for row in actions %}
+                        <tr>
+                            <td>{{ row["symbol"] }}</td><td>{{ row['number'] }}</td>
+                            <td>${{ row["price_per_one*number"] }}</td><td>{{ row['transacted'] }}</td>
+                        </tr>
+                    {% endfor %}
+            </tbody>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol of a share" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Look up</button>
+    </form>
+    {% if quotes is not none %}
+        <h1>Shares</h1>
+        <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Symbol</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>{{ quotes["name"] }}</td><td>{{ quotes["price"] }}</td><td>{{ quotes["symbol"] }}</td>
+            </tr>
+    {% endif %}
+          </tbody>
+        </table>
+{% endblock %}
